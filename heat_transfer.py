@@ -7,7 +7,7 @@ rpi = .250 # m - raio interno do pvc
 rpe = rpi+.003 # m - raio externo do pvc
 L   = 1.5 # m - comprimento do tubo
 
-P = 5 # W - potência esquentando o carbono
+P = 3.18 # W - potência esquentando o carbono
 Tinf = 20 # °C - temperatura ambiente
 
 ka = .03 # W/mK - condutividade térmica do ar
@@ -16,8 +16,8 @@ h = 1 # W/m²K - coeficiente de convecção do pvc com o ar externo
 
 sigma = 5.67e-8 # W/m²K⁴ - constante de Stefan-Boltzmann
 
-dra = .001 # m - espaçamento dos pontos no ar interno
-drp = .0001 # m - espaçamento dos pontos no pvc
+dra = .0001 # m - espaçamento dos pontos no ar interno
+drp = .00001 # m - espaçamento dos pontos no pvc
 
 # Variáveis auxiliares
 Na = int(np.round((rpi-rc )/dra))
