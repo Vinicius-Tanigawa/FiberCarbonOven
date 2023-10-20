@@ -8,7 +8,7 @@ rpe = rpi+.003 # m - raio externo do pvc
 L   = 1.5 # m - comprimento do tubo
 
 P = 3.18 # W - potência esquentando o carbono
-Tinf = 20 # °C - temperatura ambiente
+Tinf = 25 # °C - temperatura ambiente
 
 ka = .03 # W/mK - condutividade térmica do ar
 kp = .2 # W/mK - condutividade térmica do pvc

@@ -28,5 +28,7 @@ fig.update_layout(
   plot_bgcolor="White",
   paper_bgcolor="White",
   template = "plotly_white",
-  width=800,height=400,
+  width=1618,height=1000,
 )
+
+fig.show()
