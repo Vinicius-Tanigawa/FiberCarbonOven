@@ -16,9 +16,9 @@ fig.add_trace(go.Scatter(
 ))
 
 fig.update_layout(
-  title="Distribuição de temperatura no forninho",
+  title="Distribuição de Temperatura no Forno",
   xaxis = dict(
-    title= "Posição radial [m]",
+    title= "Posição Radial [m]",
     # gridcolor = "lightgrey",
   ),
   yaxis = dict(
@@ -28,7 +28,7 @@ fig.update_layout(
   plot_bgcolor="White",
   paper_bgcolor="White",
   template = "plotly_white",
-  width=1618,height=1000,
+  width=809,height=500,
 )
 
 fig.show()

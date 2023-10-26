@@ -2,24 +2,24 @@
 
 import numpy as np
 
-rc  = (29+.75)/2 /1000 # m - raio externo do carbono
-rpi = .250 # m - raio interno do pvc
-rpe = rpi+.003 # m - raio externo do pvc
-L   = 1.5 # m - comprimento do tubo
+rc  = (29+.75)/2 /1000 # m - carbon external radius
+rpi = .250 # m - PVC internal radius
+rpe = rpi+.003 # m - PVC external radius
+L   = 1.5 # m - Tube length
 
-P = 3.18 # W - potência esquentando o carbono
-Tinf = 25 # °C - temperatura ambiente
+P = 3.18 # W - Power heating carbon
+Tinf = 25 # °C - Ambient temperature
 
-ka = .03 # W/mK - condutividade térmica do ar
-kp = .2 # W/mK - condutividade térmica do pvc
-h = 1 # W/m²K - coeficiente de convecção do pvc com o ar externo
+ka = .03 # W/mK - Air thermal conductivity
+kp = .2 # W/mK - PVC thermal conductivity
+h = 1 # W/m²K - Convection coefficient between PVC and external air
 
-sigma = 5.67e-8 # W/m²K⁴ - constante de Stefan-Boltzmann
+sigma = 5.67e-8 # W/m²K⁴ - Stefan-Boltzmann constant
 
-dra = .0001 # m - espaçamento dos pontos no ar interno
-drp = .00001 # m - espaçamento dos pontos no pvc
+dra = .0001 # m - Spacing of points in internal air 
+drp = .00001 # m - Spacing if points in PVC
 
-# Variáveis auxiliares
+# Auxiliary variables
 Na = int(np.round((rpi-rc )/dra))
 Np = int(np.round((rpe-rpi)/drp))
 N = Na+Np+1
@@ -42,12 +42,12 @@ B = np.zeros((N))
 Tc_ant = Tc+1
 
 cont = 0
-while abs(Tc-Tc_ant)>1e-3 and cont<100:
+while abs(Tc-Tc_ant)>1e-3 and cont<200:
 
-  # Calcula a matriz A e o vetor B
+  # Calculate matrix A and vector B
   for i in range(N):
     if i==0:
-      A[i][i  ] = 1
+      A[i][i] = 1
       A[i][i+1] = -1
       B[i] = dra/Ac/ka*(P-PR)
     elif 0<i<Na:
@@ -71,7 +71,7 @@ while abs(Tc-Tc_ant)>1e-3 and cont<100:
       A[i][i-1] = -1
       A[i][i  ] = h*drp/kp + 1
       B[i] = h*drp/kp * Tinf
-  # Resolve o sistema de equações
+  # Solve the equations system
   T = np.linalg.solve(A, B)
 
   Tc = T[0]
